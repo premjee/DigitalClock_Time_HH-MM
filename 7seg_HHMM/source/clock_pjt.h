@@ -36,7 +36,7 @@ extern "C" {
 
 #include <xc.h>
     
-//#define DEBUG_7SEG_LED //Uncomment it for testing LED 
+#define DEBUG_7SEG_LED //Uncomment it for testing LED 
 /* Uncomment PRODUCTION_RELEASE macro for programming the device
  *   for the first time. This initializes date and time to RTC register.
  */
