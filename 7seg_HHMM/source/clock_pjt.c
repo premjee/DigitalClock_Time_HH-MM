@@ -1,12 +1,12 @@
 /*
- * File:   main.c
+ * File:   clock_pjt.c
  * Author: Prem Jeevan
  *
  * Created on November 19, 2017, 11:34 PM
  */
 
 #include "clock_pjt.h"
-#include "i2c.h"
+#include "i2c_peripheral.h"
 #include "ds1307.h"
 #include "segment_LED.h"
 
@@ -29,9 +29,6 @@ void main(void) {
 #ifdef DEBUG_7SEG_LED
     test_segment_led();
 #endif      
-#ifdef PRODUCTION_RELEASE 
-    setup_rtc();
-#endif        
     while(1){        
         update_time();
         display_digit(bin2bcd_h(hours),HRS_DISP_H);

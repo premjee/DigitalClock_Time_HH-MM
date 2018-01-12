@@ -30,11 +30,10 @@ extern "C" {
 uint8_t seconds, minutes, hours, dayofweek, dayofmonth, month, year;
 
 void init_rtc(void);
-#ifdef PRODUCTION_RELEASE
 void setup_rtc(void);
-#endif
 void update_time(void);
-
+void update_date_time(void);
+void check_rtc(void);
 
 #ifdef	__cplusplus
 }

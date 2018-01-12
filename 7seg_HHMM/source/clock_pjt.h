@@ -37,12 +37,6 @@ extern "C" {
 #include <xc.h>
     
 //#define DEBUG_7SEG_LED //Uncomment it for testing LED 
-/* Uncomment PRODUCTION_RELEASE macro for programming the device
- *   for the first time. This initializes date and time to RTC register.
- */
-//#define PRODUCTION_RELEASE    
-
-
 
 #define HOURS_SWITCH_PIN         PORTCbits.RC7
 #define MIN_SWITCH_PIN           PORTCbits.RC6
@@ -59,6 +53,7 @@ extern "C" {
 #define bin2bcd_l(x)    ((x)%10)
 
 typedef unsigned int uint8_t;
+typedef unsigned char ubyte;
 void check_switch_status(void);
 void init_RTC_config_switches(void);
 #ifdef	__cplusplus
