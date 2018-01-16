@@ -113,7 +113,7 @@ void check_rtc(void){
         setup_rtc();
     }
     prevSec = seconds;
-    for(i=0;i<20;i++)
+    for(i=0;i<20;i++) // delay for 2 sec
     __delay_ms(100);
     update_time();
     if(prevSec == seconds){

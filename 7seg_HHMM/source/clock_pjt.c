@@ -12,7 +12,11 @@
 
 
 void main(void) {
-   OPTION_REG = 0x00;
+//   OPTION_REG = 0x0F; // PSA=1; prescale assighed to WDT for 1sec.
+    OPTION_REGbits.PSA = 1;
+ //   OPTION_REGbits.PS = 7;
+    WDTCONbits.SWDTEN = 1; // software enabled WDT
+    WDTCON |=0x0C; // 0x08= 2sec; 0x0A=4sec; 0x0C=8sec delay 
     INTCON = 0x00;
     PIE1 = 0x00;    
     TRISA = 0x00;
@@ -24,12 +28,14 @@ void main(void) {
     init_RTC_config_switches();
     init_segment_leds();
     __delay_ms( 1);
-
+    
     init_rtc();
 #ifdef DEBUG_7SEG_LED
     test_segment_led();
-#endif      
-    while(1){        
+#endif    
+
+    while(1){
+        asm("clrwdt");
         update_time();
         display_digit(bin2bcd_h(hours),HRS_DISP_H);
         display_digit(bin2bcd_l(hours),HRS_DISP_L);
